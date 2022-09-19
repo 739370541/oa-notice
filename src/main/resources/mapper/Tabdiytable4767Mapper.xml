@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kelun.oa.notice.mapper.Tabdiytable4767Mapper">
+  <resultMap id="BaseResultMap" type="com.kelun.oa.notice.entity.Tabdiytable4767">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="iOrd" jdbcType="INTEGER" property="iord" />
+    <result column="F93655" jdbcType="NUMERIC" property="f93655" />
+    <result column="F93656" jdbcType="NVARCHAR" property="f93656" />
+    <result column="F93657" jdbcType="NVARCHAR" property="f93657" />
+    <result column="F93658" jdbcType="NVARCHAR" property="f93658" />
+    <result column="F93659" jdbcType="NVARCHAR" property="f93659" />
+    <result column="F93660" jdbcType="NVARCHAR" property="f93660" />
+    <result column="F93661" jdbcType="NVARCHAR" property="f93661" />
+    <result column="F93662" jdbcType="NVARCHAR" property="f93662" />
+    <result column="F93663" jdbcType="NVARCHAR" property="f93663" />
+    <result column="F93664" jdbcType="NVARCHAR" property="f93664" />
+    <result column="F93665" jdbcType="NVARCHAR" property="f93665" />
+    <result column="F93666" jdbcType="NVARCHAR" property="f93666" />
+    <result column="F93667" jdbcType="NVARCHAR" property="f93667" />
+    <result column="F93668" jdbcType="NVARCHAR" property="f93668" />
+    <result column="F93669" jdbcType="NVARCHAR" property="f93669" />
+    <result column="F93670" jdbcType="NVARCHAR" property="f93670" />
+    <result column="F93671" jdbcType="NVARCHAR" property="f93671" />
+    <result column="F93672" jdbcType="NVARCHAR" property="f93672" />
+  </resultMap>
+    <resultMap id="baseResultMap" type="com.kelun.oa.notice.entity.dto.FillInInfoDTO">
+        <result column="id" jdbcType="INTEGER" property="id" javaType="LONG"/>
+        <result column="subject" jdbcType="NVARCHAR" property="subject" />
+        <result column="fillInType" jdbcType="INTEGER" property="fillInType" />
+        <result column="formName" jdbcType="NUMERIC" property="formName" />
+        <result column="fillInCycle" jdbcType="NVARCHAR" property="fillInCycle" />
+        <result column="reportName" jdbcType="NVARCHAR" property="reportName" />
+        <result column="startDate" jdbcType="NVARCHAR" property="startDate" />
+        <result column="endDate" jdbcType="NVARCHAR" property="endDate" />
+        <result column="fillInWay" jdbcType="NVARCHAR" property="fillInWay" />
+        <result column="hierarchy" jdbcType="NVARCHAR" property="hierarchy" />
+        <result column="factoryCode" jdbcType="NVARCHAR" property="factoryCode" />
+        <result column="workShop" jdbcType="NVARCHAR" property="workShop" />
+        <result column="fillInPrincipal" jdbcType="NVARCHAR" property="fillInPrincipal" />
+        <result column="fillInNo" jdbcType="NVARCHAR" property="fillInNo" />
+        <result column="platePrincipal" jdbcType="NVARCHAR" property="platePrincipal" />
+        <result column="plateNo" jdbcType="NVARCHAR" property="plateNo" />
+        <result column="monitorPrincipal" jdbcType="NVARCHAR" property="monitorPrincipal" />
+        <result column="monitorNo" jdbcType="NVARCHAR" property="monitorNo" />
+    </resultMap>
+   <insert id="insert" parameterType="com.kelun.oa.notice.entity.Tabdiytable4767">
+    insert into tabDIYTable4767 (ID, iOrd, F93655, 
+      F93656, F93657, F93658, 
+      F93659, F93660, F93661, 
+      F93662, F93663, F93664, 
+      F93665, F93666, F93667, 
+      F93668, F93669, F93670, 
+      F93671, F93672)
+    values (#{id,jdbcType=INTEGER}, #{iord,jdbcType=INTEGER}, #{f93655,jdbcType=NUMERIC}, 
+      #{f93656,jdbcType=NVARCHAR}, #{f93657,jdbcType=NVARCHAR}, #{f93658,jdbcType=NVARCHAR}, 
+      #{f93659,jdbcType=NVARCHAR}, #{f93660,jdbcType=NVARCHAR}, #{f93661,jdbcType=NVARCHAR}, 
+      #{f93662,jdbcType=NVARCHAR}, #{f93663,jdbcType=NVARCHAR}, #{f93664,jdbcType=NVARCHAR}, 
+      #{f93665,jdbcType=NVARCHAR}, #{f93666,jdbcType=NVARCHAR}, #{f93667,jdbcType=NVARCHAR}, 
+      #{f93668,jdbcType=NVARCHAR}, #{f93669,jdbcType=NVARCHAR}, #{f93670,jdbcType=NVARCHAR}, 
+      #{f93671,jdbcType=NVARCHAR}, #{f93672,jdbcType=NVARCHAR})
+  </insert>
+  <select id="getFillInStartInfos" resultMap="baseResultMap">
+        select
+           a.F93654 as subject,
+           b.F93656 as fillInType,
+           b.F93657 as formName,
+           b.F93658 as fillInCycle,
+           b.F93659 as reportName,
+           b.F93660 as startDate,
+           b.F93661 as endDate,
+           b.F93662 as fillInWay,
+           b.F93663 as hierarchy,
+           b.F93664 as factoryCode,
+           b.F93665 as workShop,
+           b.F93666 as fillInPrincipal,
+           b.F93668 as fillInNo,
+           b.F93669 as platePrincipal,
+           b.F93670 as plateNo,
+           b.F93671 as monitorPrincipal,
+           b.F93672 as monitorNo
+        from
+            Tabdiytable4766 a
+        left join
+            Tabdiytable4767 b
+        on a.iOrd=b.iOrd and a.id=b.id
+        <where>
+            (b.F93658='按需' or b.F93658='每天')  or b.F93660=
+            case when b.F93658='年' then
+                concat('每年',#{month},'月',#{day},'号')
+             when b.F93658='月' then
+                concat('每月',#{day},'号')
+             when b.F93658='周' then
+                concat('每',#{weekString}) end
+        </where>
+  </select>
+  <select id="getFillInEndInfos" resultType="com.kelun.oa.notice.entity.dto.FillInInfoDTO">
+      select
+      a.F93654 as subject,
+      b.F93656 as fillInType,
+      b.F93657 as formName,
+      b.F93658 as fillInCycle,
+      b.F93659 as reportName,
+      b.F93660 as startDate,
+      b.F93661 as endDate,
+      b.F93662 as fillInWay,
+      b.F93663 as hierarchy,
+      b.F93664 as factoryCode,
+      b.F93665 as workShop,
+      b.F93666 as fillInPrincipal,
+      b.F93668 as fillInNo,
+      b.F93669 as platePrincipal,
+      b.F93670 as plateNo,
+      b.F93671 as monitorPrincipal,
+      b.F93672 as monitorNo
+      from
+      Tabdiytable4766 a
+      left join
+      Tabdiytable4767 b
+      on a.iOrd=b.iOrd and a.id=b.id
+      <where>
+          (b.F93658='按需' or b.F93658='每天') and
+          case when b.F93658='年' then
+          <if test="month!=null and month!='' and day!=null and day!=''" >
+              and b.F93661=concat('每年',#{month},'月',#{day},'日')
+          </if>
+          case when b.F93658='月' then
+          <if test="(month==null or month=='') and day!=null and day!=''">
+              and b.F93661=concat('每月',#{day},'号')
+          </if>
+          case when b.F93658='周' then
+          <if test="weekString!=null and weekString!=''">
+              and b.F93661 like concat('%每',#{weekString},'%')
+          </if>
+          else 1=1 end
+      </where>
+  </select>
+  <select id="getMonitorStartInfos" resultType="com.kelun.oa.notice.entity.dto.FillInInfoDTO">
+      select
+      a.F93654 as subject,
+      b.F93656 as fillInType,
+      b.F93657 as formName,
+      b.F93658 as fillInCycle,
+      b.F93659 as reportName,
+      b.F93660 as startDate,
+      b.F93661 as endDate,
+      b.F93662 as fillInWay,
+      b.F93663 as hierarchy,
+      b.F93664 as factoryCode,
+      b.F93665 as workShop,
+      b.F93666 as fillInPrincipal,
+      b.F93668 as fillInNo,
+      b.F93669 as platePrincipal,
+      b.F93670 as plateNo,
+      b.F93671 as monitorPrincipal,
+      b.F93672 as monitorNo
+      from
+      Tabdiytable4766 a
+      left join
+      Tabdiytable4767 b
+      on a.iOrd=b.iOrd and a.id=b.id
+      <where>
+          (b.F93658='按需' or b.F93658='每天')
+          case when b.F93658='年' then
+            and b.F93661=concat('每年',#{month},'月',#{day},'日')
+          case when b.F93658='月' then
+            and  b.F93661=concat('每月',#{day},'号')
+          case when b.F93658='周' then
+            and  b.F93661 like concat('%每',#{weekString},'%')
+          else and 1=1 end
+      </where>
+  </select>
+</mapper>

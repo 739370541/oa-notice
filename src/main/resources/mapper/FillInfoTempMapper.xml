@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kelun.oa.notice.mapper.FillInfoTempMapper">
+    <resultMap id="BaseResultMap" type="com.kelun.oa.notice.entity.Tabdiytable4766">
+        <result column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="iOrd" jdbcType="INTEGER" property="iord"/>
+        <result column="RepID" jdbcType="INTEGER" property="repid"/>
+        <result column="FillDate" jdbcType="TIMESTAMP" property="filldate"/>
+        <result column="ModifyDate" jdbcType="TIMESTAMP" property="modifydate"/>
+        <result column="DeptID" jdbcType="INTEGER" property="deptid"/>
+        <result column="OperID" jdbcType="INTEGER" property="operid"/>
+        <result column="sDesc" jdbcType="NVARCHAR" property="sdesc"/>
+        <result column="bIsFinish" jdbcType="CHAR" property="bisfinish"/>
+        <result column="bLocked" jdbcType="CHAR" property="blocked"/>
+        <result column="bCanViewWhenNoFinished" jdbcType="CHAR" property="bcanviewwhennofinished"/>
+        <result column="OperID2" jdbcType="INTEGER" property="operid2"/>
+        <result column="dUpdate2" jdbcType="TIMESTAMP" property="dupdate2"/>
+        <result column="F93654" jdbcType="NVARCHAR" property="f93654"/>
+    </resultMap>
+    <select id="getFillInStartInfos" resultType="com.kelun.oa.notice.entity.dto.FillInInfoDTO">
+    select
+    *
+    from
+    fill_in_info
+    where ds = #{ds}
+  </select>
+</mapper>

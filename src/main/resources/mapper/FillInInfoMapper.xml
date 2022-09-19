@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kelun.oa.notice.mapper.FillInInfoMapper">
+    <resultMap id="BaseResultMap" type="com.kelun.oa.notice.entity.FillInInfo">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="subject" property="subject"/>
+        <result column="fillInType" property="fillInType"/>
+        <result column="formName" property="formName"/>
+        <result column="fillInCycle" property="fillInCycle"/>
+        <result column="reportName" property="reportName"/>
+        <result column="startDate" property="startDate"/>
+        <result column="endDate" property="endDate"/>
+        <result column="fillInWay" property="fillInWay"/>
+        <result column="hierarchy" property="hierarchy"/>
+        <result column="factoryCode" property="factoryCode"/>
+        <result column="workShop" property="workShop"/>
+        <result column="fillInPrincipal" property="fillInPrincipal"/>
+        <result column="fillInNo" property="fillInNo"/>
+        <result column="platePrincipal" property="platePrincipal"/>
+        <result column="plateNo" property="plateNo"/>
+        <result column="monitorPrincipal" property="monitorPrincipal"/>
+        <result column="monitorNo" property="monitorNo"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, subject, fillInType, formName, fillInCycle, reportName, startDate, endDate, fillInWay,
+    hierarchy, factoryCode, workShop, fillInPrincipal, fillInNo, platePrincipal, plateNo, 
+    monitorPrincipal, monitorNo
+  </sql>
+    <select id="getFillInEndInfos" resultType="com.kelun.oa.notice.entity.FillInInfo">
+        select
+        *
+        from
+        fill_in_info
+        <where>
+            state=1
+            <if test="endDate!=null">
+                and end_time=#{endDate}
+            </if>
+        </where>
+    </select>
+
+</mapper>
