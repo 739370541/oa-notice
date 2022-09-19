@@ -50,8 +50,8 @@ public class FillInStartNoticeJob {
     public void fillInStartNotice() {
         log.info("填报警告定时任务开始执行");
         //当前时间
-        //String nowDate = getNowDateStr();
-        String nowDate = "2022-09-19";
+        String nowDate = getNowDateStr();
+        //String nowDate = "2022-09-19";
 
         //获取当天的填报信息，若全部填报程序结束
         List<FillInInfoDTO> fillInStartInfos = fillInStartService.getFillInStartInfos(nowDate);
@@ -180,7 +180,7 @@ public class FillInStartNoticeJob {
         OaRequest.DataInfo dataInfo = new OaRequest.DataInfo();
         dataInfo.setReceiver(receiver);
         dataInfo.setMessageType(type);
-        dataInfo.setDataSubs(fillInInfos);
+        dataInfo.setSub(fillInInfos);
         oaRequest.setDataInfo(dataInfo);
         return oaRequest;
     }

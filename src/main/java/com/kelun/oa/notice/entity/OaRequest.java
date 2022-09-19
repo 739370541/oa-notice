@@ -95,7 +95,7 @@ public class OaRequest {
         /**
          * 明细行数据信息
          */
-        private List<FillInInfo> dataSubs;
+        private List<FillInInfo> sub;
     }
 
 }
